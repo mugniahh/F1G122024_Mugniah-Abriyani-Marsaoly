@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Asisten Notulen Rapat</title>
+    <style>
+        body { font-family: Arial; margin: 30px; }
+        textarea { width: 100%; height: 150px; }
+        button { padding: 10px 20px; margin-top: 10px; }
+        pre { background: #f4f4f4; padding: 15px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+<h2>Asisten Otomatis Penyusunan Notulen Rapat</h2>
+
+<textarea id="inputText" placeholder="Masukkan isi rapat..."></textarea><br>
+<button onclick="generate()">Buat Notulen</button>
+
+<h3>Hasil Notulen</h3>
+<pre id="output"></pre>
+
+<script>
+async function generate() {
+    const text = document.getElementById("inputText").value;
+    const result = await window.pywebview.api.generate(text);
+    document.getElementById("output").innerText = result;
+}
+</script>
+
+</body>
+</html>
